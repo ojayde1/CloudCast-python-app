@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: cloudcast-service # Changed from exchange-rate-service
+  labels:
+    app: cloudcast-app # Changed from exchange-rate-app
+spec:
+  type: ClusterIP # This service type is only accessible from inside the Kubernetes cluster
+  ports:
+  - port: 80         # The port that the service itself will listen on within the cluster
+    targetPort: 5000 # The port that your application container (Flask app) is listening on
+  selector:
+    app: cloudcast-app # Must match the 'app' label in your deployment.yml

@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cloudcast-app-deployment # Changed from exchange-rate-app
+  labels:
+    app: cloudcast-app # Changed from exchange-rate-app
+spec:
+  replicas: 2 # You can adjust the number of replicas (instances of your app)
+  selector:
+    matchLabels:
+      app: cloudcast-app # Changed from exchange-rate-app
+  template:
+    metadata:
+      labels:
+        app: cloudcast-app # Changed from exchange-rate-app
+    spec:
+      containers:
+      - name: cloudcast-python-container # Changed from exchange-rate-app
+        image: ojayde35/cloudcast-python-app:latest # Updated to your image
+        ports:
+        - containerPort: 5000 # Your Flask app's listening port
+        env:
+        - name: FLASK_ENV
+          value: "production"
+        # --- IMPORTANT: Add your OpenWeatherMap API Key here ---
+        # This assumes you've stored your OpenWeatherMap API Key in a GitHub Secret
+        # named OPENWEATHER_API_KEY. The pipeline will pass this into the container.
+        - name: OPENWEATHER_API_KEY
+          value: "${{ secrets.OPENWEATHER_API_KEY }}" # <-- You MUST create this secret!
+        resources:
+          requests:
+            memory: "64Mi" # Minimum memory requested
+            cpu: "250m"   # Minimum CPU requested (250m = 0.25 CPU core)
+          limits:
+            memory: "128Mi" # Maximum memory allowed
+            cpu: "500m"   # Maximum CPU allowed (500m = 0.5 CPU core)
+        livenessProbe:
+          httpGet:
+            path: /health # <--- IMPORTANT: Changed to /health for your specific health endpoint
+            port: 5000
+          initialDelaySeconds: 30 # Time to wait before starting first liveness check
+          periodSeconds: 10       # How often to perform the check
+        readinessProbe:
+          httpGet:
+            path: /health # <--- IMPORTANT: Changed to /health for your specific health endpoint
+            port: 5000
+          initialDelaySeconds: 5  # Time to wait before starting first readiness check
+          periodSeconds: 5        # How often to perform the check
