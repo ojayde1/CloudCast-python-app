@@ -183,6 +183,8 @@ To access the App on your browser, open a new ssh terminal and run this command 
 ```bash
 ssh -L 5000:localhost:5000 -i path/to/your/keypair ubuntu@ec2-ip-address
 
+ssh -L 5000:localhost:5000 -i mk-keys.pem ubuntu@54.154.192.59
+
 ```
 Inside your terminal run this command to port-ward your service from your cluster to your node port
 

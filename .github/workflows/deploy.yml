@@ -22,7 +22,7 @@ jobs:
       with:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: us-east-1 # Make sure this matches your EC2 instance's region
+        aws-region: eu-west-1 # Make sure this matches your EC2 instance's region
 
     - name: Connect to EC2 instance and Deploy to Kubernetes
       run: |
