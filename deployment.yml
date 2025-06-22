@@ -17,6 +17,7 @@ spec:
       containers:
       - name: cloudcast-python-container # Changed from exchange-rate-app
         image: ojayde35/cloudcast-python-app:latest # Updated to your imagegit
+        imagePullPolicy: IfNotPresent # <--- ADD THIS LINE to prevent pulling from external registrygit
         ports:
         - containerPort: 5000 # Your Flask app's listening port
         env:
