@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: cloudcast-service # Changed from exchange-rate-service
+  name: cloudcast-service 
   labels:
-    app: cloudcast-app # Changed from exchange-rate-app
+    app: cloudcast-app 
 spec:
   type: ClusterIP # This service type is only accessible from inside the Kubernetes cluster
   ports:

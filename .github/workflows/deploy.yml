@@ -78,7 +78,7 @@ jobs:
           # Get the URL of your deployed service (output will appear in GitHub Actions logs)
           minikube service cloudcast-service --url # Adjust service name if different in service.yml
 
-          echo "Deployment to Minikube on EC2 successful!"
+          echo "Deployment to Minikube on EC2 successful!!"
         EOF
 
         # Clean up the temporary SSH private key from the GitHub Actions runner

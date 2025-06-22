@@ -124,7 +124,7 @@ The application handles various error scenarios:
 - API service unavailability
 - Invalid API responses
 - Unexpected Data Formats
-- General exceptions
+- General exceptions.
 
 
 ## Deployment

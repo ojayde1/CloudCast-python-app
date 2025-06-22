@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: cloudcast-python-container # Changed from exchange-rate-app
-        image: ojayde35/cloudcast-python-app:latest # Updated to your image
+        image: ojayde35/cloudcast-python-app:latest # Updated to your imagegit
         ports:
         - containerPort: 5000 # Your Flask app's listening port
         env:
