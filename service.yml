@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: cloudcast-service 
+  name: cloudcast-service
   labels:
     app: cloudcast-app 
 spec:
