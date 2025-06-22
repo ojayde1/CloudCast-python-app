@@ -80,6 +80,6 @@ jobs:
 
           echo "Deployment to Minikube on EC2 successful!!"
         EOF
-
+        
         # Clean up the temporary SSH private key from the GitHub Actions runner
         rm -f private_key.pem
